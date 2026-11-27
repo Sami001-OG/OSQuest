@@ -21,3 +21,9 @@ progress,progress::-webkit-progress-bar{background:var(--raised)}progress::-webk
 .guide-card h3,.guide-subpart h3{font-size:17px;line-height:1.55;margin:14px 0}.guide-marks{color:var(--mint);font-size:12px;font-weight:750;white-space:nowrap}.guide-answer{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.85;font-size:var(--reading);color:var(--ink);padding:12px 0}.guide-tip{border-top:1px solid var(--line);padding-top:12px;margin-top:14px}.guide-tip p{font-size:13px;margin:5px 0}.guide-table-wrap{overflow:auto;margin:12px 0}.guide-table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.6;color:var(--ink)}.guide-table th,.guide-table td{text-align:left;border-bottom:1px solid var(--line);padding:10px;vertical-align:top}.guide-table th{color:var(--accent)}.guide-filters{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin:15px 0}.guide-filters label{min-width:0;color:var(--muted);font-size:12px}.guide-filters label:first-child{grid-column:1/-1}.guide-filters select{display:block;width:100%;max-width:100%;margin:5px 0;padding:10px}.guide-subpart{padding:18px 0 12px;border-bottom:1px solid var(--line)}.guide-subpart:last-child{border:0}.hero .guide-marks{color:#a4e4d1}
 
 .audit-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}.audit-row span{flex:1;min-width:140px}.audit-row button{font-size:12px;min-height:40px;margin:0}.audit-filter{display:block;color:var(--muted);font-size:12px}.audit-filter select{display:block;width:100%;margin:6px 0 14px}
+
+.syllabus-explanation {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
