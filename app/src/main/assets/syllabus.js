@@ -19,7 +19,7 @@ function auditPage() {
     '<section class="hero"><h2>Your syllabus progress</h2><p>' + recalled + ' of ' + syllabusTopics.length +
     ' topics recalled across ' + syllabusUnits.length + ' units.</p>' +
     '<progress aria-label="Syllabus recall progress" value="' + recalled + '" max="' + syllabusTopics.length +
-    '"></progress><p>Read the definition and example, then answer the recall question before opening the model answer.</p>' +
+    '"></progress><p>Start with the simple definition and example. Open the exam definition to practise the wording, then try the recall question.</p>' +
     resume + '</section>' +
     syllabusUnits.map(unit => {
       const done = syllabusRecallCount(unit.topics);
@@ -68,10 +68,11 @@ function syllabusTopic(unitId, topicId) {
   page(
     back(unitPage, unit.title) +
     header(topic.title, 'Topic ' + (index + 1) + ' of ' + unit.topics.length + ' · ' + unit.title) +
-    '<section class="reader-block"><h2>Definition</h2><p>' + esc(topic.definition) + '</p>' +
+    '<section class="reader-block"><h2>In simple words</h2><p>' + esc(topic.definition) + '</p>' +
     '<div class="syllabus-explanation"><h2>How it works</h2><p>' + esc(topic.explanation) + '</p>' +
     '</div><div class="syllabus-explanation"><h2>Example</h2><p class="worked">' + esc(topic.example) +
-    '</p></div></section>' +
+    '</p></div><details><summary>Exam definition</summary><p>' + esc(topic.examDefinition) +
+    '</p></details></section>' +
     '<section class="reader-block"><h2>Check your recall</h2><p>' + esc(topic.question) + '</p>' +
     '<details><summary>Reveal model answer</summary><p>' + esc(topic.answer) + '</p>' +
     '<button class="full" id="syllabus-recall" aria-pressed="' + done + '" onclick="toggleSyllabusRecall(\'' +
