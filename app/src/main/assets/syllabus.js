@@ -11,7 +11,7 @@ function auditPage() {
   const nextTopic = nextUnit?.topics.find(topic => !state.syllabusRecalled.includes(topic.id));
   const resume = nextTopic
     ? btn("syllabusTopic('" + nextUnit.id + "','" + nextTopic.id + "')",
-        (recalled ? 'Continue with ' : 'Start with ') + esc(nextTopic.title), 'primary full')
+        (recalled ? 'Continue with ' : 'Start with ') + esc(nextTopic.title), 'primary')
     : '';
   page(
     back('home()', 'Learn') +
@@ -21,11 +21,12 @@ function auditPage() {
     '<progress aria-label="Syllabus recall progress" value="' + recalled + '" max="' + syllabusTopics.length +
     '"></progress><p>Start with the simple definition and example. Open the exam definition to practise the wording, then try the recall question.</p>' +
     resume + '</section>' +
-    syllabusUnits.map(unit => {
+    '<div class="section-head"><h2>Syllabus units</h2></div><div class="syllabus-grid">' + syllabusUnits.map(unit => {
       const done = syllabusRecallCount(unit.topics);
       return card("syllabusUnit('" + unit.id + "')", done === unit.topics.length ? 'check' : 'book',
-        unit.title, done + '/' + unit.topics.length + ' recalled');
-    }).join('') +
+        unit.title, done + '/' + unit.topics.length + ' recalled',
+        '<progress aria-label="Unit recall progress" value="' + done + '" max="' + unit.topics.length + '"></progress>');
+    }).join('') + '</div>' +
     '<section><h2>Course references</h2><p>Topic order follows the supplied syllabus, page 4 of 8. ' +
     'Prescribed books are Modern Operating Systems by Andrew S. Tanenbaum and Operating System Concepts by ' +
     'Abraham Silberschatz, Peter Baer Galvin and Greg Gagne.</p></section>', 0
@@ -43,7 +44,7 @@ function syllabusUnit(unitId) {
     unit.topics.map(topic => {
       const done = state.syllabusRecalled.includes(topic.id);
       return card("syllabusTopic('" + unit.id + "','" + topic.id + "')", done ? 'check' : 'book',
-        topic.title, done ? 'Recalled · revisit' : 'Definition, example and recall question');
+        topic.title, done ? 'Recalled · revisit' : '');
     }).join(''), 0
   );
 }
@@ -68,12 +69,12 @@ function syllabusTopic(unitId, topicId) {
   page(
     back(unitPage, unit.title) +
     header(topic.title, 'Topic ' + (index + 1) + ' of ' + unit.topics.length + ' · ' + unit.title) +
-    '<section class="reader-block"><h2>In simple words</h2><p>' + esc(topic.definition) + '</p>' +
+    '<section class="reader-block"><div class="syllabus-definition"><h2>In simple words</h2><p>' + esc(topic.definition) + '</p></div>' +
     '<div class="syllabus-explanation"><h2>How it works</h2><p>' + esc(topic.explanation) + '</p>' +
     '</div><div class="syllabus-explanation"><h2>Example</h2><p class="worked">' + esc(topic.example) +
     '</p></div><details><summary>Exam definition</summary><p>' + esc(topic.examDefinition) +
     '</p></details></section>' +
-    '<section class="reader-block"><h2>Check your recall</h2><p>' + esc(topic.question) + '</p>' +
+    '<section class="reader-block syllabus-recall"><h2>Check your recall</h2><p>' + esc(topic.question) + '</p>' +
     '<details><summary>Reveal model answer</summary><p>' + esc(topic.answer) + '</p>' +
     '<button class="full" id="syllabus-recall" aria-pressed="' + done + '" onclick="toggleSyllabusRecall(\'' +
     topic.id + '\')">' + (done ? 'Recalled ✓' : 'I recalled this') + '</button></details></section>' +
