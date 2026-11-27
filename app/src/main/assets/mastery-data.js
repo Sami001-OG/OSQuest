@@ -278,5 +278,29 @@ const masteryData={
       "Explain how checksums, redundancy and ordered writes work together to approximate stable storage.",
       "Checksum verifies whether a stored copy matches recorded integrity information, redundancy provides another recoverable copy, ordered durable writes and commit metadata identify authoritative state after interruption. If first copy is torn, recover previous committed copy; if first is valid but second is stale, choose version according to the commit protocol and repair stale copy. A simultaneous failure of all copies exceeds the assumed failure model. Independent backups protect against wider data-loss events."
     ]
+  ],
+  "4-0": [
+    [
+      "Application",
+      5,
+      "A database thread holds a lock A and waits for lock B while another holds B and waits for A. Discuss four deadlock conditions and a prevention policy.",
+      "Mutual exclusion: A and B are exclusive locks. Hold and wait: both hold one and request the other. No preemption: locks cannot safely be forcibly taken while protecting shared updates. Circular wait: each waits for the other's lock. Both tasks are deadlocked. Enforce a global acquisition order A before B, release after protected work. This removes circular wait; it may constrain concurrency but does not require maximum-claim knowledge."
+    ]
+  ],
+  "4-3": [
+    [
+      "Application",
+      5,
+      "Compare starvation under priority scheduling with starvation caused by SSTF disk scheduling. Give remedies.",
+      "Priority scheduling can indefinitely postpone low-priority tasks if high-priority work continually arrives; aging or fair queues can help. SSTF can indefinitely postpone distant requests as nearby requests arrive; sweeping (SCAN/LOOK) or request aging can improve service guarantees. Starvation affects particular tasks while others progress, unlike a deadlocked set."
+    ]
+  ],
+  "5-2": [
+    [
+      "Application",
+      6,
+      "A user creates a hard link and symbolic link to file X, then removes the original filename. Explain what happens.",
+      "A hard link is another directory entry referencing the same inode; it still accesses the contents after original name removed. A symbolic link holds a pathname; if the stored path was the removed original name and is not recreated, it becomes dangling. File data remain while hard link(s) or open references exist. Directories map names to identifiers, while inode stores metadata and block mappings."
+    ]
   ]
 };
