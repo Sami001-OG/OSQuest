@@ -129,6 +129,14 @@ const auditCore={
     [
       "Timer",
       "Hardware mechanism generating timed events, enabling preemption."
+    ],
+    [
+      "Bootloader",
+      "Software that loads the kernel or another operating-system startup image and transfers control to it."
+    ],
+    [
+      "Firmware",
+      "Low-level persistent software that initializes hardware and provides platform startup services."
     ]
   ],
   "0-2": [
@@ -175,6 +183,34 @@ const auditCore={
     [
       "Mechanism",
       "Implementation that carries out a decision."
+    ],
+    [
+      "Virtual machine",
+      "Isolated virtual computer presenting virtual hardware to a guest OS."
+    ],
+    [
+      "Hypervisor",
+      "Virtualization layer managing execution and resource allocation of guest virtual machines."
+    ],
+    [
+      "Type 1 hypervisor",
+      "Hypervisor executing directly on physical hardware."
+    ],
+    [
+      "Type 2 hypervisor",
+      "Hosted hypervisor executing with services of a host operating system."
+    ],
+    [
+      "Guest OS",
+      "Operating system executing inside a virtual machine."
+    ],
+    [
+      "Host OS",
+      "Operating system providing services for a hosted virtualization platform."
+    ],
+    [
+      "Container",
+      "Isolated process environment sharing the host operating-system kernel."
     ]
   ],
   "1-0": [
@@ -611,6 +647,22 @@ const auditCore={
     [
       "Lost update",
       "Concurrent update overwrites another update because the read-modify-write sequence is not atomic."
+    ],
+    [
+      "Marshalling",
+      "Encode arguments or results into a message representation for transmission."
+    ],
+    [
+      "Unmarshalling",
+      "Decode a message into arguments or return values."
+    ],
+    [
+      "Client stub",
+      "Local wrapper constructing remote procedure requests and returning replies."
+    ],
+    [
+      "Server stub",
+      "Receiver decoding requests and invoking the server procedure."
     ]
   ],
   "3-1": [
